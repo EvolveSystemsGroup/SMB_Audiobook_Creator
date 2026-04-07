@@ -662,10 +662,6 @@ class MainWindow(Adw.ApplicationWindow):
         header = Adw.HeaderBar()
         toolbar_view.add_top_bar(header)
 
-        close_button = Gtk.Button(label='Close')
-        close_button.connect('clicked', lambda *_: dialog.close())
-        header.pack_end(close_button)
-
         picture = Gtk.Picture.new_for_filename(path)
         picture.set_can_shrink(True)
         picture.set_content_fit(Gtk.ContentFit.CONTAIN)
