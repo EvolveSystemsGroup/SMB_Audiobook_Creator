@@ -70,5 +70,5 @@ modules:
       - install -Dm644 data/app.sellmybook.smbaudiobookcreator.png /app/share/icons/hicolor/512x512/apps/app.sellmybook.smbaudiobookcreator.png
     sources:
       - type: archive
-        url: https://github.com/EvolveSystemsGroup/SMB_Audiobook_Creator/archive/refs/tags/v2.0.1.tar.gz
-        sha256: 6a4ff733eb33bb15718135ed70895653c3b87e566519bd031c348ac92a2559ec
+        url: https://github.com/EvolveSystemsGroup/SMB_Audiobook_Creator/archive/refs/tags/v2.0.2.tar.gz
+        sha256: e428634ca1f75bb5fc035a6d042461606780b45fda415b1c5935303e8474b09f
