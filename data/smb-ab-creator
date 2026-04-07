@@ -1,2 +1,3 @@
 #!/usr/bin/env sh
+export GSK_RENDERER="${GSK_RENDERER:-ngl}"
 exec /app/share/smb-ab-creator/main.py "$@"

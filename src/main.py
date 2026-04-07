@@ -868,6 +868,7 @@ class MainWindow(Adw.ApplicationWindow):
         if self.actions_section is not None:
             self.actions_section.set_sensitive(not running)
         self.details_button.set_sensitive(not running)
+        self.discard_project_button.set_sensitive(not running)
         self.build_button.set_sensitive(self.input_dir.get_text().strip() != '')
         self.action_build_button.set_sensitive(self.input_dir.get_text().strip() != '')
         self.build_button_spinner.set_spinning(running)
@@ -884,6 +885,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.build_button.set_sensitive(loaded)
         self.action_build_button.set_sensitive(loaded)
         self.discard_project_button.set_visible(loaded)
+        self.discard_project_button.set_sensitive(loaded and self.worker is None)
 
     def discard_project(self) -> None:
         if self.worker is not None:
