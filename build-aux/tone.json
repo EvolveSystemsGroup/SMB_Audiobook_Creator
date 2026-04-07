@@ -5,9 +5,8 @@
     "export PATH=\"/usr/lib/sdk/dotnet8/bin:${PATH}\"",
     "export LD_LIBRARY_PATH=\"/usr/lib/sdk/dotnet8/lib:${LD_LIBRARY_PATH:-}\"",
     "export DOTNET_CLI_TELEMETRY_OPTOUT=1",
-    "dotnet restore tone/tone.csproj --packages /run/build/tone/nuget-packages --source /run/build/tone/nuget-sources",
-    "export RID=\"$(case \"${FLATPAK_ARCH}\" in x86_64) echo linux-x64 ;; aarch64) echo linux-arm64 ;; *) echo \"Unsupported architecture: ${FLATPAK_ARCH}\" >&2; exit 1 ;; esac)\"",
-    "dotnet publish tone/tone.csproj -c Release -r \"${RID}\" --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true --no-restore -o publish",
+    "dotnet restore tone/tone.csproj -r \"$(case \"${FLATPAK_ARCH}\" in x86_64) echo linux-x64 ;; aarch64) echo linux-arm64 ;; *) echo \"Unsupported architecture: ${FLATPAK_ARCH}\" >&2; exit 1 ;; esac)\" --packages /run/build/tone/nuget-packages --source /run/build/tone/nuget-sources",
+    "dotnet publish tone/tone.csproj -c Release -r \"$(case \"${FLATPAK_ARCH}\" in x86_64) echo linux-x64 ;; aarch64) echo linux-arm64 ;; *) echo \"Unsupported architecture: ${FLATPAK_ARCH}\" >&2; exit 1 ;; esac)\" --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true --no-restore -o publish",
     "install -Dm755 publish/tone /app/bin/tone"
   ],
   "sources": [
@@ -211,6 +210,34 @@
       "sha256": "f92c692531c6888f9afd6f202074aae9cbdd5e5f2bbe561e0c39f4eb68099524",
       "dest": "nuget-sources",
       "dest-filename": "microsoft.netcore.app.crossgen2.linux-x64.8.0.21.nupkg"
+    },
+    {
+      "type": "file",
+      "url": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.linux-x64/8.0.21/microsoft.netcore.app.runtime.linux-x64.8.0.21.nupkg",
+      "sha256": "75018e201363496a919a674484b0c1dc8b9f11648b5a27cfe10ddb48eb255b5c",
+      "dest": "nuget-sources",
+      "dest-filename": "microsoft.netcore.app.runtime.linux-x64.8.0.21.nupkg"
+    },
+    {
+      "type": "file",
+      "url": "https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.app.runtime.linux-x64/8.0.21/microsoft.aspnetcore.app.runtime.linux-x64.8.0.21.nupkg",
+      "sha256": "d25ba72ef2ef8eeeeaf5ea9963e70a5186d5e36dad999760e14a552b6ea50b14",
+      "dest": "nuget-sources",
+      "dest-filename": "microsoft.aspnetcore.app.runtime.linux-x64.8.0.21.nupkg"
+    },
+    {
+      "type": "file",
+      "url": "https://api.nuget.org/v3-flatcontainer/microsoft.netcore.app.runtime.linux-arm64/8.0.21/microsoft.netcore.app.runtime.linux-arm64.8.0.21.nupkg",
+      "sha256": "eb0c266adfb900b19c1ece8d8958f8ec9bb45337d337235095d9d92b29845dd8",
+      "dest": "nuget-sources",
+      "dest-filename": "microsoft.netcore.app.runtime.linux-arm64.8.0.21.nupkg"
+    },
+    {
+      "type": "file",
+      "url": "https://api.nuget.org/v3-flatcontainer/microsoft.aspnetcore.app.runtime.linux-arm64/8.0.21/microsoft.aspnetcore.app.runtime.linux-arm64.8.0.21.nupkg",
+      "sha256": "cd9a1d3b4cb8dd44474d16a9ee22e54c62a31928216243d9fc53c547b1547dea",
+      "dest": "nuget-sources",
+      "dest-filename": "microsoft.aspnetcore.app.runtime.linux-arm64.8.0.21.nupkg"
     },
     {
       "type": "file",
