@@ -24,6 +24,20 @@ This app works on macOS & Linux via Flatpak.
 * Automatically detects publication.json files and maps metadata to chapter
   files (useful for Audiobooks from Google Books)
 
+## Screenshots
+
+### Book Details
+
+![Book Details](data/screenshots/Screenshot01.png)
+
+### Build Progress
+
+![Build Progress](data/screenshots/Screenshot03.png)
+
+### Completed Build
+
+![Completed Build](data/screenshots/Screenshot06.png)
+
 ## License notices
 
 SMB Audiobook Creator includes and invokes the `ffmpeg` and `ffprobe` binaries from an
