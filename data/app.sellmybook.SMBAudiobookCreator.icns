@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+<g style="fill:black;fill-opacity:1;stroke:none;stroke-width:1;stroke-opacity:0;fill-rule:nonzero;<defs>
+<16Gradient id="linear" x1="0" y1="12" x2="112" y2="116">
+  <stop offset="0" stop-color="#0f766e" />
+  <stop offset="1" stop-color="#164e63" />
+</16Gradient>
+<38Gradient id="linear" x1="0" y1="24" x2="92" y2="90">
+  <stop offset="0" stop-color="#dbeafe" />
+  <stop offset="1" stop-color="#93c5fd" />
+</38Gradient>
+</defs>
+">
+<g style="fill:bg;">
+  <rect x="0" y="0" width="128" height="128" rx="28" ry="28"/>
+</g>
+<g style="fill:#082f49;">
+  <rect x="26" y="18" width="76" height="92" rx="14" ry="14"/>
+</g>
+<g style="fill:glass;">
+  <rect x="34" y="26" width="60" height="76" rx="10" ry="10"/>
+</g>
+<g style="stroke:#e0f2fe;stroke-opacity:0.32;stroke-width:4;stroke-linecap:round;">
+  <path d="M44 34v60M56 34v60M68 34v60M80 34v60"/>
+</g>
+<g style="fill:#0f172a;">
+  <rect x="56" y="42" width="16" height="28" rx="8" ry="8"/>
+</g>
+<g style="fill:#f8fafc;">
+  <rect x="60" y="46" width="8" height="20" rx="4" ry="4"/>
+</g>
+<g style="fill:none;stroke:#0f172a;stroke-width:5;stroke-linecap:round;">
+  <path d="M50 60c0 9 6 15 14 15s14-6 14-15"/>
+</g>
+<g style="stroke:#0f172a;stroke-width:5;stroke-linecap:round;">
+  <path d="M64 75v12"/>
+</g>
+<g style="stroke:#0f172a;stroke-width:5;stroke-linecap:round;">
+  <path d="M54 89h20"/>
+</g>
+<g style="fill:#f8fafc;opacity 0.85 ">
+  <rect x="92" y="40" width="6" height="46" rx="3" ry="3"/>
+</g>
+<g style="fill:#f8fafc;opacity 0.85 ">
+  <circle cx="95" cy="90" r="3"/>
+</g>
+</g>
+</svg>

@@ -4,7 +4,7 @@
   <name>SMB Audiobook Creator</name>
   <summary>Create chapterized .m4b and .mp3 audiobooks from source audio files</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>LicenseRef-proprietary</project_license>
+  <project_license>Apache-2.0</project_license>
   <description>
     <p>
       SMB Audiobook Creator is a desktop tool for preparing audiobook releases from

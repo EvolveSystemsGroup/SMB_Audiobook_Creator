@@ -451,15 +451,15 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.set_issue_url('https://sellmybook.app')
         dialog.set_comments(
             'Create professional .m4b and .mp3 audiobook files.\n\n'
-            'SMB Audiobook Creator is proprietary software.\n\n'
+            'SMB Audiobook Creator is licensed under the Apache License 2.0.\n\n'
             'This software uses third-party components including GTK4, Libadwaita, '
             'PyGObject, the ffmpeg and ffprobe binaries from an LGPL-configured '
             'FFmpeg build, libmp3lame, and tone.'
         )
         dialog.add_legal_section(
             'SMB Audiobook Creator',
-            'SMB Audiobook Creator is proprietary software. All rights reserved.',
-            Gtk.License.CUSTOM,
+            'Licensed under the Apache License 2.0.',
+            Gtk.License.APACHE_2_0,
             None,
         )
         dialog.add_legal_section(

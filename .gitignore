@@ -1,0 +1,10 @@
+build-dir/
+.flatpak-builder/
+build/
+dist/
+.DS_Store
+*.pkg
+src/__py*
+repo/
+.codex
+*.flatpak
