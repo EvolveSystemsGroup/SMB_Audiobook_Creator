@@ -577,9 +577,26 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.set_child(toolbar_view)
         dialog.present(self)
 
+    def dismiss_promo_banner(self, *_args) -> None:
+        self.promo_banner.set_visible(False)
+
+    def show_promo_banner(self) -> None:
+        self.promo_banner.set_visible(True)
+
     def _promo_banner(self) -> Gtk.Widget:
+        overlay = Gtk.Overlay()
         outer = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=0)
         outer.add_css_class('promo-banner')
+        overlay.set_child(outer)
+
+        dismiss_button = Gtk.Button(icon_name='window-close-symbolic')
+        dismiss_button.set_valign(Gtk.Align.START)
+        dismiss_button.set_halign(Gtk.Align.END)
+        dismiss_button.set_margin_top(12)
+        dismiss_button.set_margin_end(12)
+        dismiss_button.add_css_class('flat')
+        dismiss_button.connect('clicked', self.dismiss_promo_banner)
+        overlay.add_overlay(dismiss_button)
 
         content = Gtk.Box(
             orientation=Gtk.Orientation.HORIZONTAL,
@@ -629,7 +646,7 @@ class MainWindow(Adw.ApplicationWindow):
         content.append(left)
         content.append(right)
         outer.append(content)
-        return outer
+        return overlay
 
     def show_cover_fullscreen(self, *_args) -> None:
         path = self.cover_file.get_text().strip()
@@ -967,8 +984,11 @@ class MainWindow(Adw.ApplicationWindow):
         self.cover_preview_button.set_sensitive(False)
         self.cover_preview_button.connect('clicked', self.show_cover_fullscreen)
 
+        enlarge_hint = self._label('Click to enlarge', dim=True, xalign=0.5)
+        enlarge_hint.set_halign(Gtk.Align.FILL)
+
         right.append(self.cover_preview_button)
-        right.append(self._label('Click to enlarge', dim=True))
+        right.append(enlarge_hint)
 
         top_grid.attach(left, 0, 0, 1, 1)
         top_grid.attach(right, 1, 0, 1, 1)
@@ -2121,6 +2141,7 @@ class MainWindow(Adw.ApplicationWindow):
 
         self.log_buffer.set_text('')
         self.set_status_details('')
+        self.show_promo_banner()
         self.start_progress()
         self.set_status('Preparing files…')
         self.set_build_running(True)
