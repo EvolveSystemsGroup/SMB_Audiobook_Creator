@@ -53,7 +53,7 @@ This software uses `libmp3lame` as a separate third-party library.
 
 Project website:
 
-`https://www.mp3dev.org`
+`https://lame.sourceforge.io/`
 
 ## tone
 
