@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>app.sellmybook.SMBAudiobookCreator</id>
+  <name>SMB Audiobook Creator</name>
+  <summary>Create chapterized .m4b and .mp3 audiobooks from source audio files</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-proprietary</project_license>
+  <description>
+    <p>
+      SMB Audiobook Creator is a desktop tool for preparing audiobook releases from
+      folders of source audio files. It creates chapterized M4B outputs, optional MP3
+      copies, and writes audiobook metadata in a single guided workflow.
+    </p>
+    <p>
+      The app is designed for audiobook production work and bundles the command-line
+      tools it needs to transcode, merge, and tag files locally on your machine.
+    </p>
+    <ul>
+      <li>Import chapter files from a folder or add them manually</li>
+      <li>Reorder or exclude chapters before building the final audiobook</li>
+      <li>Write title, author, narrator, year, description, and cover art metadata</li>
+      <li>Create a chapterized M4B and an optional MP3 copy in one build</li>
+      <li>Review the full build log when a conversion step fails</li>
+    </ul>
+  </description>
+  <launchable type="desktop-id">app.sellmybook.SMBAudiobookCreator.desktop</launchable>
+  <developer id="app.sellmybook">
+    <name>Evolve Systems Distribution Pty Ltd</name>
+  </developer>
+  <content_rating type="oars-1.1" />
+  <url type="homepage">https://sellmybook.app</url>
+  <releases>
+    <release version="2.0.0" date="2026-04-07" />
+  </releases>
+</component>

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=SMB Audiobook Creator
+Comment=Create chapterized .m4b and .mp3 audiobooks from source audio files
+Exec=smb-ab-creator
+Icon=app.sellmybook.SMBAudiobookCreator
+Terminal=false
+Type=Application
+Categories=AudioVideo;Audio;GTK;
+StartupNotify=true

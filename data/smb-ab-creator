@@ -1,0 +1,2 @@
+#!/usr/bin/env sh
+exec /app/share/smb-ab-creator/main.py "$@"
