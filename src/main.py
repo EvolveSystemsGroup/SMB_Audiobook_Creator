@@ -363,11 +363,18 @@ class MainWindow(Adw.ApplicationWindow):
         self._active_output_paths: tuple[Path, Path | None] | None = None
         self.editor_stack_frame: Gtk.Frame | None = None
         self.actions_section: Gtk.Widget | None = None
+        self.promo_banners: list[Gtk.Widget] = []
 
         self.details_button = Gtk.Button(label='Details')
         self.details_button.set_visible(False)
         self.details_button.connect('clicked', lambda *_: self.show_details())
         header.pack_start(self.details_button)
+
+        self.discard_project_button = Gtk.Button(label='Discard Project')
+        self.discard_project_button.add_css_class('destructive-action')
+        self.discard_project_button.set_visible(False)
+        self.discard_project_button.connect('clicked', lambda *_: self.discard_project())
+        header.pack_start(self.discard_project_button)
 
         self.about_button = Gtk.Button(label='About')
         self.about_button.connect('clicked', lambda *_: self.show_about())
@@ -578,10 +585,12 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.present(self)
 
     def dismiss_promo_banner(self, *_args) -> None:
-        self.promo_banner.set_visible(False)
+        for banner in self.promo_banners:
+            banner.set_visible(False)
 
     def show_promo_banner(self) -> None:
-        self.promo_banner.set_visible(True)
+        for banner in self.promo_banners:
+            banner.set_visible(True)
 
     def _promo_banner(self) -> Gtk.Widget:
         overlay = Gtk.Overlay()
@@ -608,6 +617,7 @@ class MainWindow(Adw.ApplicationWindow):
         )
 
         right = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=12, hexpand=True)
+        right.set_valign(Gtk.Align.CENTER)
 
         title = self._label('We Built a New Bookstore That Puts Authors First... Your Book Might Already Be There!')
         title.add_css_class('title-2')
@@ -646,6 +656,7 @@ class MainWindow(Adw.ApplicationWindow):
         content.append(left)
         content.append(right)
         outer.append(content)
+        self.promo_banners.append(overlay)
         return overlay
 
     def show_cover_fullscreen(self, *_args) -> None:
@@ -680,15 +691,20 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.present(self)
 
     def _build_welcome_page(self) -> Gtk.Widget:
+        outer = Gtk.Box(
+            orientation=Gtk.Orientation.VERTICAL,
+            spacing=18,
+            margin_top=24,
+            margin_bottom=24,
+            margin_start=24,
+            margin_end=24,
+        )
+
         box = Gtk.Box(
             orientation=Gtk.Orientation.VERTICAL,
             spacing=18,
             valign=Gtk.Align.CENTER,
             halign=Gtk.Align.CENTER,
-            margin_top=24,
-            margin_bottom=24,
-            margin_start=24,
-            margin_end=24,
         )
         box.set_size_request(640, -1)
 
@@ -696,9 +712,9 @@ class MainWindow(Adw.ApplicationWindow):
         title.set_markup('<span size="xx-large" weight="bold">Create a professional .m4b audiobook file super quickly!</span>')
         title.set_wrap(True)
 
-        step1 = self._label('Step 1. Open a folder once to import chapter files and load cover/description defaults.')
-        step2 = self._label('Step 2. Add or remove chapter files from anywhere, then choose an export folder.')
-        step3 = self._label('Step 3. Click "Build Audiobook".')
+        step1 = self._label('Step 1. Open a folder once to import chapter files.')
+        step2 = self._label('Step 2. Edit the metadata and reorganise your chapters.')
+        step3 = self._label('Step 3. Click "Build Audiobook" and wait.')
 
         open_button = Gtk.Button(label='Import from folder')
         open_button.add_css_class('suggested-action')
@@ -717,7 +733,9 @@ class MainWindow(Adw.ApplicationWindow):
         box.append(step3)
         box.append(open_button)
         box.append(note)
-        return box
+        outer.append(box)
+        outer.append(self._promo_banner())
+        return outer
 
     def _build_editor_page(self) -> Gtk.Widget:
         self.editor_scroll = Gtk.ScrolledWindow(hscrollbar_policy=Gtk.PolicyType.NEVER)
@@ -726,8 +744,7 @@ class MainWindow(Adw.ApplicationWindow):
 
     def _build_editor_content(self) -> Gtk.Widget:
         box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=16, margin_top=16, margin_bottom=16, margin_start=16, margin_end=16)
-        self.promo_banner = self._promo_banner()
-        box.append(self.promo_banner)
+        box.append(self._promo_banner())
 
         switcher_row = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL)
         switcher_row.set_halign(Gtk.Align.CENTER)
@@ -862,6 +879,36 @@ class MainWindow(Adw.ApplicationWindow):
         if running:
             self.build_button.set_sensitive(True)
             self.action_build_button.set_sensitive(True)
+
+    def _set_project_loaded(self, loaded: bool) -> None:
+        self.build_button.set_sensitive(loaded)
+        self.action_build_button.set_sensitive(loaded)
+        self.discard_project_button.set_visible(loaded)
+
+    def discard_project(self) -> None:
+        if self.worker is not None:
+            return
+
+        self.chapter_rows.clear()
+        self._rebuild_chapters_ui()
+        self.input_dir.set_text('')
+        self.cover_file.set_text('')
+        self._load_cover_preview()
+        self.title_entry.set_text('')
+        self.artist_entry.set_text('')
+        self.writer_entry.set_text('')
+        self.year_entry.set_text(str(date.today().year))
+        self.narrator_entry.set_text('')
+        self.description_buffer.set_text('')
+        self.create_mp3_switch.set_active(False)
+        self.log_buffer.set_text('')
+        self.set_status_details('')
+        self.details_button.set_visible(False)
+        self._active_output_paths = None
+        self.stack.set_visible_child_name('welcome')
+        self._set_project_loaded(False)
+        self.refresh_preview()
+        self.set_status('Import a folder to begin.')
 
     def cancel_build(self) -> None:
         if self.worker is None:
@@ -1431,8 +1478,7 @@ class MainWindow(Adw.ApplicationWindow):
             self.populate_from_folder(silent=True)
             self.stack.set_visible_child_name('editor')
             GLib.idle_add(self.scroll_to_editor_top)
-            self.build_button.set_sensitive(True)
-            self.action_build_button.set_sensitive(True)
+            self._set_project_loaded(True)
             self.refresh_preview()
 
     def choose_export_folder(self, *_args) -> None:
@@ -1448,8 +1494,7 @@ class MainWindow(Adw.ApplicationWindow):
         path = file.get_path()
         if path:
             self.input_dir.set_text(path)
-            self.build_button.set_sensitive(True)
-            self.action_build_button.set_sensitive(True)
+            self._set_project_loaded(True)
             self.refresh_preview()
 
     def choose_chapter_files(self, *_args) -> None:
