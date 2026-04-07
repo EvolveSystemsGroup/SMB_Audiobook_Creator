@@ -18,7 +18,7 @@ gi.require_version('Gtk', '4.0')
 gi.require_version('Adw', '1')
 from gi.repository import Adw, Gio, GLib, Gtk  # noqa: E402
 
-APP_ID = 'app.sellmybook.SMBAudiobookCreator'
+APP_ID = 'app.sellmybook.smbaudiobookcreator'
 APP_NAME = 'SMB Audiobook Creator'
 APP_VERSION = '2.0.0'
 SUPPORTED_AUDIO_EXTS = (

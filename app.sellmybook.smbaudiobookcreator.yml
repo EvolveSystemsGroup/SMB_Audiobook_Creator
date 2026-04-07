@@ -1,4 +1,4 @@
-app-id: app.sellmybook.SMBAudiobookCreator
+app-id: app.sellmybook.smbaudiobookcreator
 runtime: org.gnome.Platform
 runtime-version: "50"
 sdk: org.gnome.Sdk
@@ -64,10 +64,10 @@ modules:
       - install -Dm755 data/smb-ab-creator /app/bin/smb-ab-creator
       - install -Dm755 src/main.py /app/share/smb-ab-creator/main.py
       - install -Dm644 data/gmb-page.png /app/share/smb-ab-creator/data/gmb-page.png
-      - install -Dm644 data/app.sellmybook.SMBAudiobookCreator.desktop /app/share/applications/app.sellmybook.SMBAudiobookCreator.desktop
-      - install -Dm644 data/app.sellmybook.SMBAudiobookCreator.metainfo.xml /app/share/metainfo/app.sellmybook.SMBAudiobookCreator.metainfo.xml
-      - install -Dm644 data/app.sellmybook.SMBAudiobookCreator.svg /app/share/icons/hicolor/scalable/apps/app.sellmybook.SMBAudiobookCreator.svg
-      - install -Dm644 data/app.sellmybook.SMBAudiobookCreator.png /app/share/icons/hicolor/512x512/apps/app.sellmybook.SMBAudiobookCreator.png
+      - install -Dm644 data/app.sellmybook.smbaudiobookcreator.desktop /app/share/applications/app.sellmybook.smbaudiobookcreator.desktop
+      - install -Dm644 data/app.sellmybook.smbaudiobookcreator.metainfo.xml /app/share/metainfo/app.sellmybook.smbaudiobookcreator.metainfo.xml
+      - install -Dm644 data/app.sellmybook.smbaudiobookcreator.svg /app/share/icons/hicolor/scalable/apps/app.sellmybook.smbaudiobookcreator.svg
+      - install -Dm644 data/app.sellmybook.smbaudiobookcreator.png /app/share/icons/hicolor/512x512/apps/app.sellmybook.smbaudiobookcreator.png
     sources:
       - type: archive
         url: https://github.com/EvolveSystemsGroup/SMB_Audiobook_Creator/archive/refs/tags/v2.0.0.tar.gz

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>app.sellmybook.SMBAudiobookCreator</id>
+  <id>app.sellmybook.smbaudiobookcreator</id>
   <name>SMB Audiobook Creator</name>
   <summary>Create chapterized .m4b and .mp3 audiobooks from source audio files</summary>
   <metadata_license>CC0-1.0</metadata_license>
@@ -23,12 +23,26 @@
       <li>Review the full build log when a conversion step fails</li>
     </ul>
   </description>
-  <launchable type="desktop-id">app.sellmybook.SMBAudiobookCreator.desktop</launchable>
+  <launchable type="desktop-id">app.sellmybook.smbaudiobookcreator.desktop</launchable>
   <developer id="app.sellmybook">
     <name>Evolve Systems Distribution Pty Ltd</name>
   </developer>
   <content_rating type="oars-1.1" />
   <url type="homepage">https://sellmybook.app</url>
+  <screenshots>
+    <screenshot type="default">
+      <caption>Edit audiobook metadata and cover art before building</caption>
+      <image>https://raw.githubusercontent.com/EvolveSystemsGroup/SMB_Audiobook_Creator/d598e8166506be101c4021175f74a2acef200349/data/screenshots/Screenshot01.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Track audiobook build progress while chapters are transcoded</caption>
+      <image>https://raw.githubusercontent.com/EvolveSystemsGroup/SMB_Audiobook_Creator/d598e8166506be101c4021175f74a2acef200349/data/screenshots/Screenshot03.png</image>
+    </screenshot>
+    <screenshot>
+      <caption>Review the completed build and open the output files</caption>
+      <image>https://raw.githubusercontent.com/EvolveSystemsGroup/SMB_Audiobook_Creator/d598e8166506be101c4021175f74a2acef200349/data/screenshots/Screenshot06.png</image>
+    </screenshot>
+  </screenshots>
   <releases>
     <release version="2.0.0" date="2026-04-07" />
   </releases>

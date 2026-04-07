@@ -6,7 +6,8 @@
     "export LD_LIBRARY_PATH=\"/usr/lib/sdk/dotnet8/lib:${LD_LIBRARY_PATH:-}\"",
     "export DOTNET_CLI_TELEMETRY_OPTOUT=1",
     "dotnet restore tone/tone.csproj --packages /run/build/tone/nuget-packages --source /run/build/tone/nuget-sources",
-    "dotnet publish tone/tone.csproj -c Release -r linux-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true -p:PublishReadyToRun=true --no-restore -o publish",
+    "export RID=\"$(case \"${FLATPAK_ARCH}\" in x86_64) echo linux-x64 ;; aarch64) echo linux-arm64 ;; *) echo \"Unsupported architecture: ${FLATPAK_ARCH}\" >&2; exit 1 ;; esac)\"",
+    "dotnet publish tone/tone.csproj -c Release -r \"${RID}\" --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true --no-restore -o publish",
     "install -Dm755 publish/tone /app/bin/tone"
   ],
   "sources": [

@@ -57,18 +57,18 @@ flatpak install flathub org.gnome.Platform//50 org.gnome.Sdk//50 org.freedesktop
 ## Build locally
 
 ```bash
-flatpak-builder --user --install --force-clean build-dir app.sellmybook.SMBAudiobookCreator.yml
+flatpak-builder --user --install --force-clean build-dir app.sellmybook.smbaudiobookcreator.yml
 ```
 
 Run it:
 
 ```bash
-flatpak run app.sellmybook.SMBAudiobookCreator
+flatpak run app.sellmybook.smbaudiobookcreator
 ```
 
 ## Create a single-file bundle
 
 ```bash
-flatpak-builder --repo=repo --force-clean build-dir app.sellmybook.SMBAudiobookCreator.yml
-flatpak build-bundle repo smb-audiobook-creator.flatpak app.sellmybook.SMBAudiobookCreator
+flatpak-builder --repo=repo --force-clean build-dir app.sellmybook.smbaudiobookcreator.yml
+flatpak build-bundle repo smb-audiobook-creator.flatpak app.sellmybook.smbaudiobookcreator
 ```
