@@ -1,8 +1,8 @@
 # SMB Audiobook Creator
 
-SMB Audiobook Creator is a desktop app for building chapterized `.m4b` and `.mp3`
-audiobooks from source audio files. It is the official audiobook production tool for
-sellmybook.app.
+SMB Audiobook Creator builds `.m4b` and `.mp3` audiobook files with chapter
+markers from audio files in a folder. It is the official audiobook production
+tool for sellmybook.app.
 
 Built with Python, GTK4, and Libadwaita. Uses FFmpeg, FFprobe, and tone for media work.
 

@@ -6,21 +6,19 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>Apache-2.0</project_license>
   <description>
-    <p>
-      SMB Audiobook Creator is a desktop tool for preparing audiobook releases from
-      folders of source audio files. It creates chapterized M4B outputs, optional MP3
-      copies, and writes audiobook metadata in a single guided workflow.
-    </p>
-    <p>
-      The app is designed for audiobook production work and bundles the command-line
-      tools it needs to transcode, merge, and tag files locally on your machine.
-    </p>
+    <p>SMB Audiobook Creator builds `.m4b` and `.mp3` audiobook files with chapter markers from audio files in a folder. It is the official audiobook production tool for <a href="https://sellmybook.app">sellmybook.app</a>.</p>
+    <p><strong>Features:</strong></p>
     <ul>
-      <li>Import chapter files from a folder or add them manually</li>
-      <li>Reorder or exclude chapters before building the final audiobook</li>
-      <li>Write title, author, narrator, year, description, and cover art metadata</li>
-      <li>Create a chapterized M4B and an optional MP3 copy in one build</li>
-      <li>Review the full build log when a conversion step fails</li>
+        <li>Automatically load all audio chapter files from a folder</li>
+        <li>Create an .m4b file embedded with rich metadata (title, writer, narrator, publication year, description, and cover art). It also includes chapter markers, which is necessary for use in audiobook players</li>
+        <li>Create an .mp3 file with all the same metadata as the .m4b file</li>
+        <li>Add/Change chapter title metadata</li>
+        <li>Add new audio files from other folders</li>
+        <li>Reorder chapters</li>
+        <li>Exclude chapters from the final bundled audiobook file</li>
+        <li>Estimates how large the final audiobook file will be</li>
+        <li>Automatically detects publication.json files and maps metadata to
+    chapter files (useful for Audiobooks from Google Books)</li>
     </ul>
   </description>
   <launchable type="desktop-id">app.sellmybook.smbaudiobookcreator.desktop</launchable>

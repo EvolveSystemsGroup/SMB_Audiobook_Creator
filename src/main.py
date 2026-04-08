@@ -455,7 +455,7 @@ class MainWindow(Adw.ApplicationWindow):
         dialog.set_version(APP_VERSION)
         dialog.set_developer_name('Evolve Systems Distribution Pty Ltd')
         dialog.set_website('https://sellmybook.app')
-        dialog.set_issue_url('https://sellmybook.app')
+        dialog.set_issue_url('https://sellmybook.app/page/contact-us')
         dialog.set_comments(
             'Create professional .m4b and .mp3 audiobook files.\n\n'
             'SMB Audiobook Creator is licensed under the Apache License 2.0.\n\n'
